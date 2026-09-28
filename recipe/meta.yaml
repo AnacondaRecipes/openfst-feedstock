@@ -15,7 +15,7 @@ source:
     - patches/0005-Update-installation-of-fsts-headers.patch             # [linux]
 
 build:
-  number: 2
+  number: 3
   # ensures that packages using openfst as a host dependency get the right runtime dependence as well, see
   # https://conda-forge.org/docs/maintainer/pinning_deps.html#specifying-run-exports
   run_exports:
@@ -25,13 +25,13 @@ build:
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('cxx') }}
     - make         # [linux]
     - automake     # [linux]
     - gnuconfig    # [linux]
     - cmake        # [not linux]
     - ninja        # [not linux]
-    - m2-patch     # [win]
   host:
     - dlfcn-win32  # [win]
   run:
